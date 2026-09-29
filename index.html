@@ -186,8 +186,15 @@ section{position:relative;padding:clamp(90px,13vh,160px) var(--gutter)}
 /* IMAGE SLOT: replace background-image with a portrait of Sruthy */
 .about-img{
   position:relative;aspect-ratio:3/4;border:1px solid rgba(201,162,94,.4);
-  background:url("portrait.jpg") center/cover;
+  background:
+    linear-gradient(160deg, rgba(74,14,20,.55), rgba(46,7,11,.40) 55%, rgba(26,20,64,.45)),
+    url("portrait.jpg") center/cover;
+  background-blend-mode:multiply, normal;
 }
+/* warm glow so the tint reads as classical maroon, not just dark */
+.about-img::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:radial-gradient(ellipse at 50% 35%, rgba(201,162,94,.16), transparent 65%);
+  mix-blend-mode:soft-light}
 .about-img::after{content:"";position:absolute;inset:12px;border:1px solid rgba(201,162,94,.35);pointer-events:none}
 .about-text p{margin-bottom:1.3rem;color:var(--cream-dim);font-size:1.05rem}
 .about-text .serif-lead{font-family:var(--serif);font-size:1.5rem;line-height:1.5;color:var(--cream);font-style:italic}
@@ -255,7 +262,9 @@ section{position:relative;padding:clamp(90px,13vh,160px) var(--gutter)}
 .contact{text-align:center;max-width:640px;margin:0 auto}
 .contact h2{font-size:clamp(2.4rem,6vw,4rem);color:var(--cream);margin-bottom:1rem}
 .contact h2 em{font-family:var(--serif);font-style:italic;color:var(--gold-bright)}
-.contact p{color:var(--cream-dim);margin-bottom:2rem}
+.contact p{color:var(--cream-dim);margin-bottom:1.6rem}
+.email-link{display:inline-block;font-family:var(--serif);font-size:clamp(1.4rem,4vw,2.1rem);color:var(--gold-bright);border:1px solid rgba(201,162,94,.5);padding:14px 34px;margin-bottom:2rem;transition:.35s;letter-spacing:.02em}
+.email-link:hover{background:var(--gold);color:var(--maroon-deep);border-color:var(--gold)}
 .socials{display:flex;gap:26px;justify-content:center;flex-wrap:wrap}
 .socials a{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim);border-bottom:1px solid transparent;padding-bottom:3px;transition:.3s}
 .socials a:hover{color:var(--gold-bright);border-color:var(--gold)}
@@ -369,8 +378,8 @@ footer.foot{text-align:center;padding:40px var(--gutter);border-top:1px solid rg
     <div class="eyebrow reveal">Get in Touch</div>
     <h2 class="reveal d1">Let's <em>Collaborate</em></h2>
     <p class="reveal d2">For performances, workshops, collaborations and press enquiries.</p>
+    <a href="mailto:sruthy.dancer@gmail.com" class="email-link reveal d2">sruthy.dancer@gmail.com</a>
     <div class="socials reveal d2">
-      <a href="mailto:sruthy.dancer@gmail.com">Email</a>
       <a href="#" target="_blank" rel="noopener">Instagram</a>
       <a href="#" target="_blank" rel="noopener">YouTube</a>
       <a href="#" target="_blank" rel="noopener">LinkedIn</a>
